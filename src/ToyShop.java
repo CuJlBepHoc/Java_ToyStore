@@ -6,6 +6,7 @@ import java.util.PriorityQueue;
 public class ToyShop {
     private final PriorityQueue<Toy> queue;
 
+    // Конструктор, принимающий список строк с данными о игрушках
     public ToyShop(String toy1, String toy2, String toy3) {
         queue = new PriorityQueue<>((t1, t2) -> Integer.compare(t2.getWeight(), t1.getWeight()));
 
@@ -22,6 +23,7 @@ public class ToyShop {
         }
     }
 
+    // Метод для добавления игрушки в очередь из строки с данными о ней
     private void addToQueueFromString(String toyString) {
         String[] toyData = toyString.split(" ");
         if (toyData.length == 3) {
@@ -34,10 +36,12 @@ public class ToyShop {
         }
     }
 
+    // Метод для добавления игрушки в очередь
     public void addToQueue(Toy toy) {
         queue.add(toy);
     }
 
+    // Метод для записи выбранных игрушек в выходной файл определенное количество раз
     public void writeSelectedToOutput(int times, String path) {
         try (FileWriter writer = new FileWriter(path)) {
             for (int i = 0; i < times; i++) {
